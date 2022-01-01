@@ -10,19 +10,30 @@ const App = {
     };
   },
   methods: {
+    /*
+    // don't need this, since Vue has this ->> v-model="inputValue"
     inputChangeHandler(event) {
       this.inputValue = event.target.value;
     },
+    */
 
     addNote() {
-      this.notes.push(this.inputValue);
+      if (this.inputValue.trim() !== "") {
+        this.notes.push(this.inputValue);
+      }
       this.inputValue = "";
+    },
+
+    toUpperCase(item) {
+      return item.toUpperCase();
     },
 
     removeNote(index) {
       this.notes.splice(index, 1);
     },
   },
+  computed: {},
+  watch: {},
 };
 
 Vue.createApp(App).mount("#app");
